@@ -1,0 +1,47 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "notifications": [
+    {
+      "id": 1,
+      "title": "Like your post",
+      "date": "2023/10/16",
+      "read": false,
+      "user": {
+        "id": 1,
+        "profileImage": "https://randomuser.me/api/portraits/women/57.jpg",
+        "firstName": "Lidia",
+        "lastName": "Popescu",
+        "email": "john@gmail.com"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Like your post",
+      "date": "2023/10/12",
+      "read": true,
+      "user": {
+        "id": 1,
+        "profileImage": "https://randomuser.me/api/portraits/men/75.jpg",
+        "firstName": "Andrew",
+        "lastName": "Luke",
+        "email": "andrew@gmail.com"
+      }
+    }
+  ]
+}

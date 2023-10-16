@@ -1,0 +1,18 @@
+.red-circle {
+  background-color: red; /* Set the background color to red */
+  border-radius: 50%; /* Make the badge a circle using border-radius */
+  width: 10px; /* Adjust the width and height as needed */
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0; /* Hide the number by setting the font size to 0 */
+}
+
+.createdAt {
+  font-size: 0.7rem;
+}
+
+.notification-title {
+  margin-left: 0.5rem;
+}

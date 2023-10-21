@@ -36,11 +36,22 @@ ion-card {
   display: flex;
   align-items: center;
   margin-top: 0.4rem;
+
+  position: absolute;
+  bottom: 9%;
+  width: 100%;
+
+  z-index: 222222;
+  padding: 0 0.5rem;
 }
 
 .actions {
   display: flex;
   align-items: center;
+
+  border-radius: 50%;
+  background-color: #ffff;
+  padding: 0.25rem;
 
   p {
     margin-bottom: 0!important;
@@ -63,4 +74,23 @@ ion-card {
 
 swiper-container {
   transition: height 0.3s ease-in-out;
+}
+
+.container-user-info {
+  margin: 0.5rem;
+
+  .container-info {
+    margin-left: 0.5rem;
+  }
+}
+
+.options-icon {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+
+.container-images {
+  margin: 0.9rem;
+  position: relative;
 }

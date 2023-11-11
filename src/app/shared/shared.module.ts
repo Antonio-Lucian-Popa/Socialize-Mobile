@@ -3,8 +3,11 @@ import { CommonModule } from '@angular/common';
 import { PostComponent } from './components/post/post.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { ViewPostComponent } from './components/view-post/view-post.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
-const NB_MODULES: any[] = [];
+const NB_MODULES: any[] = [
+  ReactiveFormsModule
+];
 
 const COMPONENTS: any[] = [
   PostComponent

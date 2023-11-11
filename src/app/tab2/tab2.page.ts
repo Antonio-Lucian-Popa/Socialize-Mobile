@@ -1,12 +1,66 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { PostService } from '../shared/services/post.service';
+import { Post } from '../shared/interfaces/post';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit, OnDestroy {
 
-  constructor() {}
+  userSearch = this.fb.group({
+    value: [""]
+  });
+
+  popularImages: Post[] = [];
+  usersSearched: any[] = [];
+
+  isPopularImages = true;
+  isUsersSearched = false;
+
+  postSubscriber!: Subscription;
+
+  // We have 2 cases:
+  // 1. When we arrive on this page, we need to view popular images, like instagram
+  // 2. If the user search something, we need to show the users finded by that name on the user input
+  // When the user input is empty, show popular images
+  // If what user search not find, show a message "Not users found"
+
+  constructor(private fb: FormBuilder, private postService: PostService) { }
+
+  ngOnInit(): void {
+
+    this.getLatestPopularImages();
+    this.userSearch.get("value")?.valueChanges.subscribe(userSearched => {
+      console.log(userSearched);
+      if (userSearched) {
+        this.isUsersSearched = true;
+        this.isPopularImages = false;
+        // TODO: find the user searched
+      } else {
+        this.isUsersSearched = false;
+        this.isPopularImages = true;
+      }
+    });
+  }
+
+  getLatestPopularImages() {
+    this.postSubscriber = this.postService.findPopularPosts().subscribe(posts => this.popularImages = posts);
+  }
+
+  onIonInfinite(ev: any) {
+    //   this.findLastNotifications();
+    setTimeout(() => {
+      (ev as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
+  }
+
+  ngOnDestroy(): void {
+    this.postSubscriber.unsubscribe();
+  }
 
 }

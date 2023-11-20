@@ -4,10 +4,15 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
+            <div class="flex align-middle justify-between">
+              <svg (click)="onBack()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+
+              <strong class="flex vertical-center">Explore</strong>
+              <div class="empty-container"></div>
+            </div>
 
           </ion-col>
         </ion-row>
@@ -15,14 +20,131 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-grid>
+  <ion-grid *ngIf="post">
     <ion-row>
       <ion-col>
-        <div class="d-flex">
+
+        <div class="container-user-info flex align-items-center">
+          <img class="w-10 h-10 rounded-full"
+            src="https://i.pinimg.com/474x/80/b7/ae/80b7ae96f64171c6059f58d35a5f37da.jpg" alt="Rounded avatar">
+          <div class="container-info flex flex-col">
+            <p class="username">{{post.user.firstName}} {{post.user.lastName}}</p>
+            <p class="date-post-info text-xs gray-font">{{post.createdAt | timeAgo}}</p>
+          </div>
+        </div>
+
+        <div class="container-images">
+          <swiper-container slides-per-view="1" loop="false" css-mode="false" pagination="true" centeredSlides="true"
+            pagination-dynamic-bullets="true" class="swiper">
+            <swiper-slide>
+              <img class="post-image" alt="Silhouette of mountains"
+                src="https://plus.unsplash.com/premium_photo-1696962118708-a7da28938943?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" />
+            </swiper-slide>
+            <swiper-slide>
+              <img class="post-image" alt="Silhouette of mountains"
+                src="https://images.unsplash.com/photo-1696948132802-3d61d42d516a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80" />
+            </swiper-slide>
+            <swiper-slide>
+              <img class="post-image" alt="Silhouette of mountains"
+                src="https://ionicframework.com/docs/img/demos/card-media.png" />
+            </swiper-slide>
+          </swiper-container>
+
+          <div class="container-actions flex mt-3">
+            <div class="flex align-middle actions">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+              </svg> -->
+
+              <ion-icon class="reactIconPost" *ngIf="!isPostLiked" name="heart-outline" (click)="likePost()"></ion-icon>
+
+              <ion-icon class="reactIconPost red-color" *ngIf="isPostLiked" name="heart" (click)="unLikePost()"></ion-icon>
+
+            </div>
+            <div class="flex align-middle actions">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+              </svg> -->
+
+              <ion-icon class="reactIconPost" name="chatbubble-ellipses-outline"></ion-icon>
+
+            </div>
+          </div>
+
+          <div class="container-post-details flex flex-col mt-3">
+            <p *ngIf="post.numberOfUserLikes > 0">Likes <strong>{{post.numberOfUserLikes}}</strong></p>
+            <p>
+                <strong>{{post.user.firstName}} {{post.user.lastName}}</strong>
+                <span *ngIf="!showFullText; else fullDescription">
+                    {{ post.description | truncate:40 }}
+                    <span *ngIf="post.description.length > 40" (click)="toggleText()" class="more-label">more</span>
+                </span>
+                <ng-template #fullDescription>{{ post.description }}</ng-template>
+            </p>
+
+            <button (click)="openCommentsModal()">
+              View Comments ({{ post.numberOfComments }})
+          </button>
+        </div>
+
 
         </div>
+
       </ion-col>
     </ion-row>
   </ion-grid>
 
 </ion-content>
+
+
+<!-- <ion-card>
+  <div class="top flex align-items-center justify-between">
+    <div class="container-user-info flex align-items-center">
+      <img class="w-10 h-10 rounded-full" src="https://i.pinimg.com/474x/80/b7/ae/80b7ae96f64171c6059f58d35a5f37da.jpg"
+        alt="Rounded avatar">
+      <div class="container-info flex flex-col">
+        <p class="username">Melissa Adam</p>
+        <p class="date-post-info text-xs gray-font">1h ago</p>
+      </div>
+    </div>
+
+    <ion-icon class="options-icon" name="ellipsis-vertical-outline"></ion-icon>
+  </div>
+
+  <div class="container-images">
+    <swiper-container slides-per-view="1" loop="false" css-mode="false" pagination="true" centeredSlides="true"
+      pagination-dynamic-bullets="true" class="swiper">
+      <swiper-slide>
+        <img class="post-image" alt="Silhouette of mountains"
+          src="https://plus.unsplash.com/premium_photo-1696962118708-a7da28938943?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" />
+      </swiper-slide>
+      <swiper-slide>
+        <img class="post-image" alt="Silhouette of mountains"
+          src="https://images.unsplash.com/photo-1696948132802-3d61d42d516a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80" />
+      </swiper-slide>
+      <swiper-slide>
+        <img class="post-image" alt="Silhouette of mountains"
+          src="https://ionicframework.com/docs/img/demos/card-media.png" />
+      </swiper-slide>
+    </swiper-container>
+
+    <div class="container-actions flex">
+      <div class="flex align-middle actions">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+        </svg>
+
+      </div>
+      <div class="flex align-middle actions">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+        </svg>
+
+      </div>
+    </div>
+  </div>
+</ion-card> -->

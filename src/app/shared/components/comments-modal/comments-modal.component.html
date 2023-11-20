@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Comments</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="dismissModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-list>
+    <ion-item *ngFor="let comment of comments" lines="none">
+      <ion-avatar slot="start">
+        <img [src]="comment.user.profileImage"/>
+      </ion-avatar>
+      <ion-label class="comment-content">
+        <div class="comment-header">
+          <h2>{{ comment.user.firstName }} {{ comment.user.lastName }}</h2>
+          <ion-icon name="heart-outline"></ion-icon>
+        </div>
+        <p>{{ comment.text }}</p>
+        <div class="comment-actions">
+          <span class="response-label" (click)="respondToComment(comment)">Respond</span>
+          <span *ngIf="comment.subcomments?.length" class="subcomments-label" (click)="viewSubComments(comment)">
+            View Subcomments ({{ comment.subcomments.length }})
+          </span>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- Input field for adding a comment -->
+  <!-- Input field for adding a comment -->
+  <div class="comment-input-container">
+    <ion-item lines="none">
+      <ion-input placeholder="Add a comment..." color="light"></ion-input>
+      <ion-button fill="clear" slot="end" (click)="postComment()">
+        <ion-icon slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </div>
+  <!-- ... -->
+</ion-content>
+

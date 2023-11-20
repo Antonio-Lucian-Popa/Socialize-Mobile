@@ -2,7 +2,7 @@
   "posts": [
     {
       "id": 1,
-      "description": "My first image on this platform",
+      "description": "My first image on this platform, i want to show you my new image from my last holliday",
       "createdAt": "2023-01-22",
       "images": [
         "https://images.unsplash.com/photo-1682686580186-b55d2a91053c?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -14,13 +14,7 @@
         "lastName": "Popescu",
         "email": "john@gmail.com"
       },
-      "userLikes": [
-        {
-          "id": 123,
-          "firstName": "John",
-          "lastName": "Doe"
-        }
-      ],
+      "numberOfUserLikes": 8,
       "numberOfComments": 8
     },
     {
@@ -37,13 +31,7 @@
         "lastName": "Popescu",
         "email": "john@gmail.com"
       },
-      "userLikes": [
-        {
-          "id": 123,
-          "firstName": "John",
-          "lastName": "Doe"
-        }
-      ],
+      "numberOfUserLikes": 8,
       "numberOfComments": 8
     },
     {
@@ -60,13 +48,7 @@
         "lastName": "Popescu",
         "email": "john@gmail.com"
       },
-      "userLikes": [
-        {
-          "id": 123,
-          "firstName": "John",
-          "lastName": "Doe"
-        }
-      ],
+      "numberOfUserLikes": 8,
       "numberOfComments": 8
     },
     {
@@ -83,21 +65,43 @@
         "lastName": "Popescu",
         "email": "john@gmail.com"
       },
-      "userLikes": [
-        {
-          "id": 123,
-          "firstName": "John",
-          "lastName": "Doe"
-        }
-      ],
+      "numberOfUserLikes": 8,
       "numberOfComments": 8
+    }
+  ],
+  "users": [
+    {
+      "uuid": 1,
+      "profileImage": "https://randomuser.me/api/portraits/women/57.jpg",
+      "firstName": "Lidia",
+      "lastName": "Popescu",
+      "email": "john@gmail.com"
     }
   ],
   "comments": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "user": {
+        "uuid": 1,
+        "profileImage": "https://randomuser.me/api/portraits/women/57.jpg",
+        "firstName": "Lidia",
+        "lastName": "Popescu",
+        "email": "john@gmail.com"
+      },
+      "text": "Great post!",
+      "timestamp": "2023-11-01T12:00:00"
+    },
+    {
+      "id": 2,
+      "user": {
+        "uuid": 1,
+        "profileImage": "https://randomuser.me/api/portraits/women/57.jpg",
+        "firstName": "Lidia",
+        "lastName": "Popescu",
+        "email": "john@gmail.com"
+      },
+      "text": "Great post!",
+      "timestamp": "2023-11-01T12:00:00"
     }
   ],
   "profile": {

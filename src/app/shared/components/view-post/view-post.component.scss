@@ -1,0 +1,125 @@
+.user-profile-info {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  .profile-image {
+    width: 2rem;
+
+    img {
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .username {
+    margin-bottom: 0 !important;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    color: #ffff;
+    margin-right: 0.3rem;
+  }
+
+  .container-info {
+    display: flex;
+    align-items: center;
+  }
+
+  margin-bottom: 0.4rem;
+}
+
+.container-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 0.4rem;
+
+  // position: absolute;
+  // bottom: 9%;
+  // width: 100%;
+
+  z-index: 222222;
+  padding: 0 0.5rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+
+  // border-radius: 50%;
+  // background-color: #ffff;
+  // padding: 0.25rem;
+
+  p {
+    margin-bottom: 0!important;
+    margin-left: 0.3rem;
+  }
+
+  ion-icon {
+    font-size: 1.3rem;
+  }
+}
+
+.actions:nth-child(2) {
+  margin-left: 1rem;
+}
+
+.post-data {
+  margin-top: 0.6rem;
+}
+
+
+swiper-container {
+  transition: height 0.3s ease-in-out;
+}
+
+.container-user-info {
+  margin: 0.5rem;
+
+  .container-info {
+    margin-left: 0.5rem;
+  }
+}
+
+.options-icon {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+
+// .container-images {
+//   margin: 0.9rem;
+//   position: relative;
+// }
+
+
+.vertical-center {
+  align-items: center;
+}
+
+.container-post-details {
+  padding: 0 0.5rem;
+}
+
+
+.reactIconPost {
+  font-size: 1.6rem!important;
+}
+
+
+.red-color {
+  color: red;
+}
+
+.more-label {
+  color: #757591;
+  cursor: pointer;
+}
+
+
+.comments-modal {
+  height: 60%; // Adjust as needed
+  width: 90%;  // Adjust as needed
+  border-radius: 15px; // Rounded corners
+  position: absolute;
+  bottom: 0;  // Align to the bottom
+}

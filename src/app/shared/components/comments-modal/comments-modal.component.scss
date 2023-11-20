@@ -1,0 +1,190 @@
+// ion-header {
+//   --background: #fff; // White background for the header
+//   --color: #262626; // Dark text for contrast
+// }
+
+// ion-toolbar {
+//   --padding-start: 10px;
+//   --padding-end: 10px;
+// }
+
+// ion-title {
+//   font-size: 17px; // Medium font size for the title
+//   font-weight: bold;
+// }
+
+// ion-content {
+//   --background: #f9f9f9; // Light gray background for the content area
+// }
+
+// ion-list {
+//   margin: 10px 0; // Space around the list of comments
+// }
+
+// ion-item {
+//   --background: #fff; // White background for each item
+//   --padding-start: 15px;
+//   --padding-end: 15px;
+//   --border-color: #dedede; // Light border for separation
+//   border-bottom: 1px solid var(--border-color);
+//   ion-label {
+//     h2 {
+//       font-size: 14px; // Size for commenter's name
+//       font-weight: bold;
+//       color: #262626;
+//     }
+//     p {
+//       font-size: 13px; // Size for comment text
+//       color: #262626;
+//     }
+//   }
+// }
+
+// ion-input {
+//   --padding-start: 15px;
+//   --padding-end: 15px;
+//   --placeholder-color: #8e8e8e; // Placeholder text color
+//   --placeholder-font-style: italic;
+//   --background: #fff; // White background for input
+//   --border-color: #dedede; // Light border for input
+//   border-bottom: 1px solid var(--border-color);
+// }
+
+// ion-button {
+//   --background: transparent; // Transparent background for the button
+//   --color: #3897f0; // Instagram's blue color for the button text
+//   font-weight: bold;
+// }
+
+
+ion-header {
+  --background: #121212; // Dark background for the header
+  --color: #fff; // White text color
+}
+
+ion-toolbar {
+  --padding-start: 10px;
+  --padding-end: 10px;
+}
+
+ion-content {
+  --background: #121212; // Dark background for content
+  --ion-color-base: #121212; // Ensure all child components use this base color
+  height: 100%; // Full height
+}
+
+ion-list {
+  width: 100%; // Full width
+  height: 100%; // Full height
+}
+
+ion-item {
+  --background: #121212; // Dark background for items
+  --color: #fff; // White text color
+  --border-color: transparent; // No borders
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --inner-padding-end: 15px;
+  --inner-border-width: 0;
+
+  ion-label {
+    h2 {
+      font-weight: bold;
+      color: #fff;
+    }
+    p {
+      color: #ccc; // Lighter color for comment text
+    }
+  }
+
+  .subcomments {
+    margin-left: 20px; // Indent subcomments
+    ion-item {
+      --background: #1e1e1e; // Slightly lighter background for subcomments
+    }
+  }
+}
+
+ion-avatar {
+  --ion-background-color: #1e1e1e; // Background for avatar
+}
+
+ion-input {
+  --placeholder-color: #ccc;
+  --color: #fff; // White color for input text
+}
+
+ion-button {
+  --color: #4b8dff; // Instagram blue color for button
+}
+
+
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+ion-list {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.comment-input {
+  position: sticky;
+  bottom: 0;
+  background: #121212;
+}
+
+
+.comment-content {
+  h2 {
+    font-size: 14px; // Smaller font size for user names
+    font-weight: bold;
+  }
+  p {
+    font-size: 16px; // Larger font size for comment text
+  }
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  ion-icon {
+    font-size: 20px; // Size of the heart icon
+  }
+  .comment-actions {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    .response-label, .subcomments-label {
+      font-size: 14px;
+      color: #3897f0; // Instagram blue color
+      cursor: pointer;
+    }
+    .subcomments-label {
+      margin-top: 4px;
+    }
+  }
+}
+
+
+.comment-input-container {
+  position: sticky;
+  bottom: 0;
+  background: #121212;
+  ion-item {
+    --background: #121212; // Dark background for the input item
+    --color: #fff; // White text color
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --border-color: transparent; // No borders
+  }
+  ion-input {
+    --placeholder-color: #ccc;
+    --color: #fff; // White color for input text
+  }
+  ion-button {
+    --color: #4b8dff; // Instagram blue color for button
+  }
+}

@@ -6,6 +6,6 @@ export interface Post {
   createdAt: string;
   images: string[],
   user: User;
-  userLikes: User;
+  numberOfUserLikes: number;
   numberOfComments: number;
 }

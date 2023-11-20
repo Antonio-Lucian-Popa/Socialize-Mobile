@@ -15,4 +15,9 @@ export class PostService {
   findPopularPosts():Observable<Post[]> {
     return this.http.get<Post[]>(this.URL_LINK);
   }
+
+  findPostById(postId: string): Observable<Post[]> {
+   // return this.http.get<Post>(this.URL_LINK + "/" + postId);
+    return this.http.get<Post[]>(this.URL_LINK);
+  }
 }
